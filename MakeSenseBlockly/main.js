@@ -16,8 +16,8 @@ chrome.app.runtime.onLaunched.addListener(function() {
     outerBounds: {
       width: width,
       height: height,
-      left: Math.round((screenWidth-width)/2),
-      top: Math.round((screenHeight-height)/2)
+      //left: Math.round((screenWidth-width)/2),
+      //top: Math.round((screenHeight-height)/2)
     }
   });
 });
