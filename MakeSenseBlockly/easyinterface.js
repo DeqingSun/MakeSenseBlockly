@@ -6,7 +6,7 @@
     buttonPlaceholder: null,
     led0High: null,
     led0Low: null,
-    
+    analog7: null,
   };
   
   var makeSenseInterface;
@@ -30,6 +30,7 @@
     ui.buttonPlaceholder.addEventListener('click', onButtonPlaceholderClicked);
     ui.led0High.addEventListener('click', onLed0HighClicked);
     ui.led0Low.addEventListener('click', onLed0LowClicked);
+    ui.analog7.addEventListener('click', onAnalog7Clicked);
     
   };
   
@@ -52,6 +53,14 @@
   var onLed0LowClicked = function() {
     makeSenseInterface.digitalOut(0,false);
   };
+  
+  var onAnalog7Clicked = function() {
+    makeSenseInterface.analogIn(7,analogReadCallBack);
+  }
+  
+  var analogReadCallBack = function(channelId,value){
+    console.log("Channel " + channelId + ":" + value);
+  }
   
   window.addEventListener('load', initializeWindow);
 }());
