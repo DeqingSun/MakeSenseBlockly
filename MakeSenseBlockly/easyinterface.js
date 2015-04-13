@@ -3,8 +3,13 @@
 (function() {
   var ui = {
     makeSenseConnected: null,
+    buttonPlaceholder: null,
+    led0High: null,
+    led0Low: null,
+    
   };
   
+  var makeSenseInterface;
 
   var initializeWindow = function() {
     for (var k in ui) {
@@ -18,14 +23,35 @@
       ui[k] = element;
     }
     
+    makeSenseInterface = new MakeSenseInterface();
+    makeSenseInterface.init();
    
     ui.makeSenseConnected.addEventListener('click', onMakeSenseConnectedClicked);
+    ui.buttonPlaceholder.addEventListener('click', onButtonPlaceholderClicked);
+    ui.led0High.addEventListener('click', onLed0HighClicked);
+    ui.led0Low.addEventListener('click', onLed0LowClicked);
+    
   };
   
   var onMakeSenseConnectedClicked = function() {
-    console.log("hello world");
+    if (makeSenseInterface.isConnected()) {
+        console.log("MakeSense is connected");
+    }else{
+        console.log("MakeSense is disconnected");
+    }
   };
   
-
+  var onButtonPlaceholderClicked = function() {
+    
+  };
+  
+  var onLed0HighClicked = function() {
+    makeSenseInterface.digitalOut(0,true);
+  };
+  
+  var onLed0LowClicked = function() {
+    makeSenseInterface.digitalOut(0,false);
+  };
+  
   window.addEventListener('load', initializeWindow);
 }());

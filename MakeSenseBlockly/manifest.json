@@ -11,5 +11,13 @@
     "background": {
       "scripts": ["main.js"]
     }
-  }
+  },
+  "permissions": [
+    "hid",
+    {
+      "usbDevices": [
+        { "vendorId": 1240, "productId": 62570 }
+      ]
+    }
+  ]
 }
